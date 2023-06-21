@@ -3,7 +3,7 @@ import '@picocss/pico/css/pico.min.css';
 const Home = () => {
   return (
     <div className='container'>
-      TEST
+      TEST, TEST2
     </div>
     
   );
