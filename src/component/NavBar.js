@@ -23,9 +23,9 @@ const NavBar = () => {
                         ><strong>Go to</strong></summary>
                     <ul role="listbox">
                         <Link to = "/SignIn"><li>Sign-In</li></Link>
-                        <li><a href="./Login/">Log-in/Out</a></li>
-                        <li><a href="./HowToUse">How to Use</a></li>
-                        <li><a href="./Info/">My Info</a></li>
+                        <li>Log-in/Out</li>
+                        <li>How to Use</li>
+                        <li>My Info</li>
                     </ul>
                     </details>
                 </li>
