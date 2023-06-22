@@ -12,7 +12,7 @@ const Info = () => {
               <article id = 'article'>
                 <hgroup>
                   <h1>My Info (Records)</h1> <br/>
-                  <h2><strong>단어 암기의 진행도</strong>를 확인하는 페이지입니다.
+                  <h2><strong><i>단어 암기의 진행도</i></strong>를 확인하는 페이지입니다.
                     <br/> 1.Search를 통해 원하는 단어로 포커싱합니다. 
                     <br/> 2.단어를 클릭하면 암기 진행도를 확인할 수 있습니다.
                   </h2>

@@ -13,7 +13,7 @@ const Home = () => {
           <hgroup>
             <h1>VM.m...?</h1>
             <h2>
-            <strong>"VocaMaster-multiCampus"</strong> 는 Quiz를 활용한 영단어 학습을 도와주는 "WebService" 입니다. 
+            <strong><i>"VocaMaster-multiCampus"</i></strong> 는 Quiz를 활용한 영단어 학습을 도와주는 "WebService" 입니다. 
             </h2>
           </hgroup>
         </article>        
