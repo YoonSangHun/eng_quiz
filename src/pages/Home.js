@@ -4,6 +4,7 @@ import Login from './Login';
 import HowToUse from './HowToUse';
 import SignIn from './SignIn';
 import Quiz from './Quiz';
+import Info from './Info';
 
 
 const Home = () => {
@@ -26,7 +27,8 @@ const Home = () => {
     
     
     
-      <Quiz/>
+      <Info/>
+
     </main>
     
   );
