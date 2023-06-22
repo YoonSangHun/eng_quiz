@@ -1,5 +1,4 @@
-import '@picocss/pico/css/pico.min.css';
-import NavBar from './NavBar';
+import NavBar from '../component/NavBar';
 
 const HowToUse = () => {
   return (

@@ -1,5 +1,3 @@
-import '@picocss/pico/css/pico.min.css';
-
 
 const SignIn = () => {
     return(
@@ -49,7 +47,7 @@ const SignIn = () => {
             </article>
         </dialog>
 
-);
-    ;}
+    );
+};
 
 export default SignIn;
