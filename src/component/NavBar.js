@@ -1,4 +1,5 @@
 import '@picocss/pico/css/pico.min.css';
+import { Link } from 'react-router-dom/dist';
 
 
 const NavBar = () => {
@@ -21,7 +22,7 @@ const NavBar = () => {
                     <summary aria-haspopup="listbox" role="link" className="secondary"
                         ><strong>Go to</strong></summary>
                     <ul role="listbox">
-                        <li><a href="./SignIn">Sign-In</a></li>
+                        <Link to = "/SignIn"><li>Sign-In</li></Link>
                         <li><a href="./Login/">Log-in/Out</a></li>
                         <li><a href="./HowToUse">How to Use</a></li>
                         <li><a href="./Info/">My Info</a></li>
