@@ -7,7 +7,7 @@ const Home = () => {
       {/* 네비게이션 바 */}
     <NavBar />
     <hr />
-      {/* 설명, 빠른시작 버튼 */}
+      {/* App 소개 */}
       <header className="container">
         <article id='article'>
           <hgroup>
@@ -18,6 +18,7 @@ const Home = () => {
           </hgroup>
         </article>        
       </header>
+      {/* button 1,2 */}
         <div className='grid'>
           <Link to="/HowToUse"> <button className="outline">HowToUse</button></Link>
           <Link to="/SignIn"> <button>Get Started</button></Link>
