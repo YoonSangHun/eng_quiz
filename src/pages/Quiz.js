@@ -8,6 +8,7 @@ const Quiz = () => {
     return(
         <main className="container">
             <NavBar />
+            <hr/>
             <header>
                 <br/>
                 {/* 퀴즈 넘버링? */}
@@ -50,10 +51,10 @@ const Quiz = () => {
                     
                 </div>
             </article>
-
-            <button className="outline"><strong>←</strong> Previous</button>
-            <button>Next <strong>→</strong></button>
-
+            <div className="grid">
+                <button className="outline"><strong>←</strong> Previous</button>
+                <button>Next <strong>→</strong></button>
+            </div>
             {/* <label form="text">정답</label>
             <input type="text" id="text" name="text"/>
             <small>단어의 의미를 입력하고 Enter 를 누르세요</small> */}
