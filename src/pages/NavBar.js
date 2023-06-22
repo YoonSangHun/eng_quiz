@@ -3,21 +3,21 @@ import '@picocss/pico/css/pico.min.css';
 
 const NavBar = () => {
     return (
-        <>
+        
         <main className ="container">
             {/* 네비게이션 바 */}
-            <nav className="container" >
+            <nav>
                 <ul>
                 <li>
-                    <a href="./" className="contrast" onClick="event.preventDefault()">
-                    <strong>MasterEnglish</strong></a>
+                    <a href="./Home" onClick={e => console.log('onClick', e)}>
+                    <strong>VM.m</strong></a>
                 </li>
                 </ul>
                 <ul>
                 <li>
                     <details role="list" dir="rtl">
                     <summary aria-haspopup="listbox" role="link" className="secondary"
-                        >Go to</summary>
+                        ><strong>Go to</strong></summary>
                     <ul role="listbox">
                         <li><a href="./SignIn">Sign-In</a></li>
                         <li><a href="./Login/">Log-in/Out</a></li>
@@ -29,7 +29,7 @@ const NavBar = () => {
                 </ul>
             </nav>
         </ main>
-        </>
+        
     );
 }
 

@@ -1,23 +1,35 @@
 import '@picocss/pico/css/pico.min.css';
+import NavBar from './NavBar';
 
 const HowToUse = () => {
   return (
-    <main class="container">      
+    <main class="container">
+      <NavBar />
+      <hr/>
       {/* 사용방법 예시 */}
       <header class="container" >
         <hgroup>
-        <h2>How to Use...?</h2>
+        <h2>STEP 1.</h2>
           <h2>
-          회원가입 후 로그인하세요. Quiz를 통해 단어를 암기하세요! 아래의 예시를 통해 방식을 이해하세요.
+          Sign-In 하고 Log-In하세요.
           </h2>
         </hgroup>
       </header>
+      <br/>
+      <br/>
       <hr/>
+      <header class="container" >
+        <hgroup>
+        <h2>STEP 2.</h2>
+          <h2>
+          아래 형태로 출제되는 Quiz를 진행하세요!
+          </h2>
+        </hgroup>
+      </header>
       {/* 퀴즈 예시화면 */}
-      <header class="container">
         <section id="progress">
-          <h2>Quiz 1</h2>
-          <progress id="progress-1" value="25" max="100"></progress>
+          <h3>Quiz 1</h3>
+          <progress id="progress-1" value="10" max="100"></progress>
         </section>
         
         <article id="article">
@@ -25,12 +37,15 @@ const HowToUse = () => {
             <input
                 type="text"
                 name="Answer"
-                placeholder="Your Answer"
+                placeholder="Your Answer in Korean"
                 aria-label="Your Answer"
                 required
             />
+            <footer>
+                단어의 뜻은 한 가지가 아니죠. 아는대로 적어보세요.
+            </footer>
         </article>
-      </header>
+    
     
     </main>
   );
