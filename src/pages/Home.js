@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import NavBar from '../component/NavBar';
-import Quiz from './Quiz'
+
 const Home = () => {
   return (
     <main className="container">
@@ -20,7 +20,7 @@ const Home = () => {
       </header>
       {/* button 1,2 */}
         <div className='grid'>
-          <Link to="/HowToUse"> <button className="outline">HowToUse</button></Link>
+          <Link to="/HowToUse"> <button className="outline">How To Use ?</button></Link>
           <Link to="/SignIn"> <button>Get Started</button></Link>
         </div>
     </main>

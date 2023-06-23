@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom/dist';
 import NavBar from '../component/NavBar';
-import Quiz from './Quiz';
 import Step1 from '../component/Step1';
 
 

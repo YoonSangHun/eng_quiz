@@ -1,11 +1,18 @@
-import '@picocss/pico/css/pico.min.css';
-
+import React, { useState } from 'react';
+import {Link} from "react-router-dom/dist";
 
 const Login = () => {
+    const [isDialogOpen, setDialogOpen] = useState(true);
+
+    const handleClose = (event) => {
+        event.preventDefault();
+        setDialogOpen(false);
+    };
+
     return(
         <dialog open>
             <article>
-            <a href="#close" aria-label="Close" className="close"></a>
+                <Link to="/"><a aria-label="Close" className="close"></a></Link>
                     <hgroup>
                     <h1>Please Login</h1>
                     <h2>For Use It</h2>

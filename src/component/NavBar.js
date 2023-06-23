@@ -1,10 +1,10 @@
 import '@picocss/pico/css/pico.min.css';
 import { Link } from 'react-router-dom/dist';
+import Login from "../pages/Login";
 
 
 const NavBar = () => {
     return (
-        
         <main className ="container">
             {/* 네비게이션 바 */}
             <nav>
@@ -35,10 +35,8 @@ const NavBar = () => {
                     </li>
                 </ul>
                 </nav>
-                
             </nav>
         </ main>
-        
     );
 }
 

@@ -1,9 +1,12 @@
+import {Link} from "react-router-dom";
+import React from "react";
+
 const SignIn = () => {
     return(
         <dialog open>
             
             <article>
-                <a href="#close" aria-label="Close" className="close"></a>
+                <Link to="/"><a aria-label="Close" className="close"></a></Link>
                 <hgroup>
                     <h1>Sign-In</h1>
                     <h2>For your Records</h2>
