@@ -1,4 +1,7 @@
+import { useRef } from "react";
 import NavBar from "../component/NavBar";
+
+
 
 const Info = () => {
     return (
