@@ -45,31 +45,8 @@ const SignIn = () => {
                     <input type=" email" id=" text" name=" text" placeholder=" Email"/>
                     <button type="submit" onClick="event.preventDefault()">Submit</button>
                 </form>
-
-                {/* <label htmlFor="valid">Username
-                    <input
-                        type="text"
-                        id="valid"
-                        name="valid"
-                        placeholder="park"
-                        aria-invalid="false"
-                    />
-                </label>
-
-                <label htmlFor="invalid">
-                    Username
-                    <input
-                        type="text"
-                        id="invalid"
-                        name="invalid"
-                        placeholder="park"
-                        aria-invalid="true"
-                    />
-                    <small>이미 중복되는 아이디 입니다.</small>
-                </label> */}
             </article>
         </dialog>
-
     );
 };
 
