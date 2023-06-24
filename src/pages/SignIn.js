@@ -34,10 +34,6 @@ const SignIn = () => {
             setMessage("패스워드가 일치하지 않습니다.")
             return false;
         }
-        if(email.length <=3 && !email.includes('@') && !email.includes('.com')){
-            setMessage("이메일 형식이 맞지 않습니다.")
-            return false;
-        }
         return true;
     }
 
