@@ -6,9 +6,7 @@ import NavBar from "../component/NavBar";
 const Info = () => {
     return (
       <main className="container">
-        {/* 네비게이션 바 */}
-        <NavBar />
-        <hr />
+          <hr />
           {/* Header */}
           <header className="container">
             
@@ -26,6 +24,9 @@ const Info = () => {
 
           {/* 진행도 표시창이 article 내에 생성 */}
           <article id="article">
+            <label><strong><i>UserName</i></strong>님의 단어별 학습도 현황입니다.</label><br/><hr/>
+
+
             {/* Search */}
             <label for="search"><strong>Search</strong></label>
                 <input type="search" id="search" name="search" placeholder="Search" />

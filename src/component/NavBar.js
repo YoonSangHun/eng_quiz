@@ -1,9 +1,8 @@
 import '@picocss/pico/css/pico.min.css';
 import { Link } from 'react-router-dom/dist';
-import Login from "../pages/Login";
 
 
-const NavBar = () => {
+const NavBar = ({ isLoggedIn, onLogout }) => {
     return (
         <main className ="container">
             {/* 네비게이션 바 */}
@@ -14,12 +13,16 @@ const NavBar = () => {
 
                 </ul>
                 <nav className='container fluid'>
-                <ul/>
+                <ul/>               
                 <ul>
                     {/* Login 중이면 LogOut만 표기, 비회원이면 Sign-In 페이지 렌더링 */}
                     <li>
-                        <Link to = "/Login"><strong>Login/Out</strong></Link>
+                        {isLoggedIn ? 
+                            (<Link to = "/Login" onClick={onLogout}><strong>LogOut</strong></Link>)
+                            : (<Link to = "/Login"><strong>LogIn</strong></Link>)
+                        }
                     </li>
+                    
                     {/* switcher 각 버튼 클릭 시 해당 페이지로 Routing 해야 함 */}
                     <li>
                         <details role="list" dir="rtl">

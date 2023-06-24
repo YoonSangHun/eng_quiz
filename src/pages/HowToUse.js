@@ -6,7 +6,6 @@ import Step1 from '../component/Step1';
 const HowToUse = () => {
   return (
     <main className="container">
-      <NavBar />
       <hr/>
       <article id='article'>
         <Step1 /> <br />
