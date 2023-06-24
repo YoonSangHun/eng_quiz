@@ -6,9 +6,7 @@ import NavBar from "../component/NavBar";
 const Info = () => {
     return (
       <main className="container">
-        {/* 네비게이션 바 */}
-        <NavBar />
-        <hr />
+          <hr />
           {/* Header */}
           <header className="container">
             
