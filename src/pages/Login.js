@@ -21,7 +21,7 @@ const Login = () => {
                     <input
                         type="text"
                         name="login"
-                        placeholder="Id"
+                        placeholder="ID"
                         aria-label="Login"
                         autoComplete="nickname"
                         required
@@ -40,7 +40,10 @@ const Login = () => {
                         {/*    Remember me*/}
                         {/*</label>*/}
                     </fieldset>
-                    <button type="submit" onClick="event.preventDefault()">Login</button>
+                    <div className='grid'>
+                        <Link to='/SignIn'><button className='primary outline'>Create ID first</button></Link>
+                        <button type="submit" onClick="event.preventDefault()">Login</button>
+                    </div>
                 </form>
             </article>
         </dialog>

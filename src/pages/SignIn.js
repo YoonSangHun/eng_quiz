@@ -39,10 +39,10 @@ const SignIn = () => {
 
                     <label htmlFor="text"><strong>Password</strong></label>
                     <input type="password" id="text" name=" text" placeholder=" Password"/>
-                    <input type=" password" id=" text" name=" text" placeholder=" Confirm Password"/>
+                    <input type="password" id=" text" name=" text" placeholder=" Confirm Password"/>
 
-                    <label htmlFor=" text"><strong>Email</strong></label>
-                    <input type=" email" id=" text" name=" text" placeholder=" Email"/>
+                    <label htmlFor="text"><strong>Email</strong></label>
+                    <input type="email" id=" text" name=" text" placeholder=" Email"/>
                     <button type="submit" onClick="event.preventDefault()">Submit</button>
                 </form>
             </article>
