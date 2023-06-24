@@ -13,7 +13,7 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
 
                 </ul>
                 <nav className='container fluid'>
-                <ul/>
+                <ul/>               
                 <ul>
                     {/* Login 중이면 LogOut만 표기, 비회원이면 Sign-In 페이지 렌더링 */}
                     <li>
