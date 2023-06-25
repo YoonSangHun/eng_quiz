@@ -29,7 +29,7 @@ const Info = () => {
 
 
             {/* Search */}
-            <label for="search"><strong>Search</strong></label>
+            <label htmlFor="search"><strong>Search</strong></label>
                 <input type="search" id="search" name="search" placeholder="Search" />
             <hr/> <br/>
 
@@ -37,7 +37,7 @@ const Info = () => {
             진행률 = progress, ""은 암기율 ""% 단어입니다.*/}
             <details>
                 <summary><mark><strong>Article</strong></mark>: (글)기사, 본문</summary>
-                    <p>"Article"은 암기율 10% 단어입니다.
+                    <div>"Article"은 암기율 10% 단어입니다.
                         <br/><br/>
                         <progress id="progress-1" value="10" max="100">
                         </progress>
@@ -45,8 +45,7 @@ const Info = () => {
                         <footer>
                             <i>총 10회 출제, 정답 1회, 오답 0회</i>
                         </footer>
-
-                    </p>
+                    </div>
             </details>
           </article>
       

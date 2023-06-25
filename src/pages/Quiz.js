@@ -5,58 +5,65 @@ import axios from "axios";
 import { server } from "../services/apiServer";
 
 import CreateQuiz from "../services/CreateQuiz";
+import useGetAllVocasCount from "../services/useGetAllVocasCount";
+
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array;
+}
 
 const Quiz = () => {
-  const [quizNumber, setQuizNumber] = useState(0);
-  const [quizList, setQuizList] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+    const quiz_count = useGetAllVocasCount();
 
-  useEffect(() => {
-      // 데이터 로딩 시작
+    const [quizNumber, setQuizNumber] = useState(0);
+    const [quizList, setQuizList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        if (quiz_count === 0) {
+            return;
+        }
+        // 데이터 로딩 시작
         setIsLoading(true);
-      
-      // 비동기로 퀴즈 데이터 가져오기
+
+        // 비동기로 퀴즈 데이터 가져오기
         const fetchQuizData = () => {
-            const quiz_count = 10;
             axios.get(`${server}/vocas/quiz?quiz_count=${quiz_count}`).then(res => {
-            console.log(JSON.parse(res.data.body))
-            setQuizList(JSON.parse(res.data.body));
-            setIsLoading(false); // 데이터 로딩 완료
-        }).catch(err => console.log(err))
+                setQuizList(JSON.parse(res.data.body));
+                setIsLoading(false); // 데이터 로딩 완료
+            }).catch(err => console.log(err))
+        };
+
+        fetchQuizData();
+    }, [quiz_count]);
+
+    // Next 버튼 클릭 시 quizNumbering을 1 올려주는 함수
+    const handleNextClick = () => {
+        setQuizNumber((prevNumbering) => prevNumbering + 1);
     };
 
-    fetchQuizData();
-  }, []);
-
-  // Next 버튼 클릭 시 quizNumbering을 1 올려주는 함수
-  const handleNextClick = () => {
-    setQuizNumber((prevNumbering) => prevNumbering + 1);
-  };
-
-  return (
-    <main className="container">
-      <NavBar></NavBar>
-      <hr />
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <QuziDetail data={quizList[quizNumber]} quizNumber={quizNumber} />
-          <div className="grid">
-            <button className="outline">
-              <strong>←</strong> Previous
-            </button>
-            <button onClick={handleNextClick}>
-              Next <strong>→</strong>
-            </button>
-          </div>
-        </>
-      )}
-      {/* <label form="text">정답</label>
+    return (
+        <main className="container">
+            <NavBar></NavBar>
+            <hr />
+            {isLoading ? (
+                <p>Loading...</p>
+            ) : (
+                <>
+                    <QuziDetail handleNextClick={handleNextClick} data={shuffleArray(quizList[quizNumber])} quizNumber={quizNumber} quiz_count={quiz_count} />
+                </>
+            )}
+            {/* <label form="text">정답</label>
             <input type="text" id="text" name="text"/>
             <small>단어의 의미를 입력하고 Enter 를 누르세요</small> */}
-    </main>
-  );
+        </main>
+    );
 };
+
 
 export default Quiz;
