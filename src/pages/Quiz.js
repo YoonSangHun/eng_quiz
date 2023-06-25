@@ -4,6 +4,7 @@ import QuziDetail from "../component/QuziDetail";
 import axios from "axios";
 import { server } from "../services/apiServer";
 import useGetAllVocasCount from "../services/useGetAllVocasCount";
+import { useNavigate } from "react-router-dom";
 
 
 const Quiz = () => {
@@ -12,6 +13,7 @@ const Quiz = () => {
     const [quizNumber, setQuizNumber] = useState(0);
     const [quizList, setQuizList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (quiz_count === 0) {
@@ -33,7 +35,11 @@ const Quiz = () => {
 
     // Next 버튼 클릭 시 quizNumbering을 1 올려주는 함수
     const handleNextClick = () => {
-        setQuizNumber((prevNumbering) => prevNumbering + 1);
+        if((quizNumber+1) === quiz_count) {
+            alert("축하드립니다. 모든 퀴즈를 푸셨습니다.")
+            navigate("/");
+        }
+        setQuizNumber((prevNumbering) => prevNumbering + 1)
     };
 
     return (

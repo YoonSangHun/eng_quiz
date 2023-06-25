@@ -7,9 +7,7 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
     const [color, setColor]  = useState(null);
     const [checkedValue, setCheckedValue] = useState(null);
     const [checkedAnswer, setCheckedAnswer] = useState(null);
-    console.log(data)
     const arr = [data.q1, data.q2, data.q3, data.q4, data.mean];
-    console.log(arr)
   
     const checkAnswer = (e) => {
         setCheckedValue(e.target.value);
@@ -44,8 +42,8 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
         <div>
         <dialog open={isOpen}>
             <article>
-                <header style={{ color: "red"}}>
-                    경고
+                <header style={{ color: "red", fontSize: "25px"}}>
+                    <strong>알림</strong>
                 </header>
                 <p>
                     남은 퀴즈 데이터가 모두 유실됩니다. 정말 나가시겠습니까?
@@ -115,7 +113,7 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
             </div>
         </article>
             <div className="grid">
-                <button onClick={handleCheckedAnswer}>
+                <button onClick={handleCheckedAnswer} disabled={checkedAnswer}>
                     <strong></strong> Checked Answer
                 </button>
                 <button className="outline" onClick={goNext} disabled={(!checkedValue)||(!checkedAnswer)}>
