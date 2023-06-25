@@ -46,7 +46,7 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
                     <strong>알림</strong>
                 </header>
                 <p>
-                    남은 퀴즈 데이터가 모두 유실됩니다. 정말 나가시겠습니까?
+                    풀었던 퀴즈 데이터가 모두 유실됩니다. 정말 나가시겠습니까?
                 </p>
             <footer>
                 <a href="#" role="button" className="secondary" onClick={닫기}>닫기</a>
