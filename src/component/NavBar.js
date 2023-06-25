@@ -10,7 +10,6 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
     useEffect(() => {
         if (jwtToken) {
             const decodedToken = jwt_decode(jwtToken);
-            console.log(decodedToken['username']);
             serLoginUser(decodedToken['username']);
         }
     }, [jwtToken]);

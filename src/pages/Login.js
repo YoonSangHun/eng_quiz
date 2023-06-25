@@ -22,6 +22,7 @@ const Login = () => {
             console.log(res)
             if (res.data.statusCode === 200) {
                 sessionStorage.setItem("JWT_TOKEN", res.data.token);
+                sessionStorage.setItem("username",username);
                 navigate("/");
             } else {
                 sessionStorage.clear();

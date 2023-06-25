@@ -1,7 +1,20 @@
 import { Link } from 'react-router-dom';
 import NavBar from '../component/NavBar';
+import {useState} from "react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const [isUser,setIsUser] = useState()
+  const navigate = useNavigate()
+
+  const handleGetStart = () => {
+    if(sessionStorage.getItem("username")){
+      navigate("/Quiz");
+    }else{
+      navigate("/Login");
+    }
+  }
+
   return (
     <main className="container">
       <NavBar></NavBar>
@@ -20,7 +33,9 @@ const Home = () => {
       {/* button 1,2 */}
         <div className='grid'>
           <Link to="/HowToUse"> <button className="outline">How To Use ?</button></Link>
-          <Link to="/SignIn"> <button>Get Started</button></Link>
+
+          <button onClick={handleGetStart}>Get Started</button>
+
         </div>
     </main>
   );
