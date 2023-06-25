@@ -81,7 +81,7 @@ const SignIn = () => {
                         onChange={handleChangeUsername}
                     />
                     {
-                        username == "" ? null :
+                        username === "" ? null :
                             username.length <= 3 ? <small>아이디는 3자리 이상이어야 합니다.</small> :
                                 !checkUsername ?
                                     <small>사용 가능한 아이디 입니다.</small>:<small>이미 중복되는 아이디 입니다.</small>

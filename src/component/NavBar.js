@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom/dist';
 import {useEffect, useState} from "react";
 import jwt_decode from 'jwt-decode';
-import {useNavigate} from "react-router-dom";
 
 
 const NavBar = ({ isLoggedIn, onLogout }) => {
     const [jwtToken,setJwtTooken] = useState(sessionStorage.getItem("JWT_TOKEN"))
     const [loginUser, serLoginUser] = useState('')
-    const navigate = useNavigate()
 
     useEffect(() => {
         if (jwtToken) {
@@ -19,8 +17,9 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
 
     const handleLogout = () =>{
         sessionStorage.clear()
+        setJwtTooken(null)
+        serLoginUser(null)
         alert("로그아웃 되었습니다.")
-        navigate("/");
     }
 
     return (
@@ -52,7 +51,7 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
                         {jwtToken ?
                             <ul role="listbox">
                                 <Link to = "/Info"><li>My Info</li></Link>
-                                <Link to="/Login" onClick={handleLogout}>
+                                <Link to="/" onClick={handleLogout}>
                                     <li style={{ color: "#F05650" }}>Logout</li>
                                 </Link>
                             </ul>
