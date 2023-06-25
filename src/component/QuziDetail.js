@@ -6,22 +6,27 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [color, setColor]  = useState(null);
     const [checkedValue, setCheckedValue] = useState(null);
+    const [checkedAnswer, setCheckedAnswer] = useState(null);
     const arr = [data.mean, data.q1, data.q2, data.q3];
-
+    console.log(arr)
   
     const checkAnswer = (e) => {
         setCheckedValue(e.target.value);
     }   
 
     const goNext = () => {
-        // 이걸 누르면
+        // 퀴즈 넘버를 1 증가시키고 모든 상태를 초기회
         handleNextClick();
-        setCheckedValue(null) // isAnswer 를 null로 초기화
+        setCheckedValue(null)
+        setCheckedAnswer(null)
         setColor(null)
     }
 
-    const 색깔을바꾸는함수 = () => {
+    const handleCheckedAnswer = () => {
+        // 정답이 맞으면 "블루", 틀리면 "레드"
         setColor(checkedValue === data.mean ? "blue" : "red");
+        // 정답 체크 유무
+        setCheckedAnswer(true)
     }
     
     const 나가기모달열기 = () => {
@@ -38,7 +43,7 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
         <div>
         <dialog open={isOpen}>
             <article>
-                <header>
+                <header style={{ color: "red"}}>
                     경고
                 </header>
                 <p>
@@ -109,10 +114,10 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
             </div>
         </article>
             <div className="grid">
-                <button onClick={색깔을바꾸는함수}>
+                <button onClick={handleCheckedAnswer}>
                     <strong></strong> Checked Answer
                 </button>
-                <button className="outline" onClick={goNext} disabled={!checkedValue}>
+                <button className="outline" onClick={goNext} disabled={(!checkedValue)||(!checkedAnswer)}>
                     <strong>Next →</strong>
                 </button>
             </div>

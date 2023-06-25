@@ -27,7 +27,7 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
             <nav>
                 <ul>
                     {/*VM.m onClick 시 Home으로 Routing 해야함  */}
-                    <Link to = "/"><strong style={{fontSize: '35px'}}><i>VM.m</i></strong></Link>
+                    <Link to = "/"><strong style={{fontSize: '35px'}}><i>VocaMaster</i></strong></Link>
 
                 </ul>
                 <nav className='container fluid'>
