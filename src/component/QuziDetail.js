@@ -7,7 +7,8 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
     const [color, setColor]  = useState(null);
     const [checkedValue, setCheckedValue] = useState(null);
     const [checkedAnswer, setCheckedAnswer] = useState(null);
-    const arr = [data.mean, data.q1, data.q2, data.q3];
+    console.log(data)
+    const arr = [data.q1, data.q2, data.q3, data.q4, data.mean];
     console.log(arr)
   
     const checkAnswer = (e) => {

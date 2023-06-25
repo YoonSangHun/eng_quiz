@@ -6,14 +6,6 @@ import { server } from "../services/apiServer";
 import useGetAllVocasCount from "../services/useGetAllVocasCount";
 
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
-
 const Quiz = () => {
     const quiz_count = useGetAllVocasCount();
 
@@ -52,7 +44,7 @@ const Quiz = () => {
                 <p>Loading...</p>
             ) : (
                 <>
-                    <QuziDetail handleNextClick={handleNextClick} data={shuffleArray(quizList[quizNumber])} quizNumber={quizNumber} quiz_count={quiz_count} />
+                    <QuziDetail handleNextClick={handleNextClick} data={quizList[quizNumber]} quizNumber={quizNumber} quiz_count={quiz_count} />
                 </>
             )}
             {/* <label form="text">정답</label>
