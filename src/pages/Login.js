@@ -34,7 +34,7 @@ const Login = () => {
     return(
         <dialog open>
             <article>
-                <Link to="/"><a aria-label="Close" className="close"></a></Link>
+                <Link to="/"><div aria-label="Close" className="close"></div></Link>
                     <hgroup>
                     <h1>Please Login</h1>
                     <h2>For Use It</h2>

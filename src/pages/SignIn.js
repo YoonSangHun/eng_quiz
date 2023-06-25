@@ -5,7 +5,6 @@ import useGetUsername from "../services/useGetUsername";
 import axios from "axios";
 import {server} from "../services/apiServer";
 
-
 const SignIn = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
