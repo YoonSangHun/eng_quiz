@@ -5,19 +5,19 @@ import jwt_decode from 'jwt-decode';
 
 const NavBar = ({ isLoggedIn, onLogout }) => {
     const [jwtToken,setJwtTooken] = useState(sessionStorage.getItem("JWT_TOKEN"))
-    const [loginUser, serLoginUser] = useState('')
+    const [loginUser, setLoginUser] = useState('')
 
     useEffect(() => {
         if (jwtToken) {
             const decodedToken = jwt_decode(jwtToken);
-            serLoginUser(decodedToken['username']);
+            setLoginUser(decodedToken['username']);
         }
     }, [jwtToken]);
 
     const handleLogout = () =>{
         sessionStorage.clear()
         setJwtTooken(null)
-        serLoginUser(null)
+        setLoginUser(null)
         alert("로그아웃 되었습니다.")
     }
 
