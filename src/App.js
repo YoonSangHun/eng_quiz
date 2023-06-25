@@ -10,25 +10,11 @@ import Quiz from './pages/Quiz';
 import Step1 from './component/Step1';
 import Step2 from './component/Step2';
 import Step3 from './component/Step3';
-import { useState } from 'react';
-import NavBar from './component/NavBar';
 
 function App() {
-  
-  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
-  const handleLogIn = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
-  
   return (
     <>
-      
       <BrowserRouter>
-        <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/Info" element={<Info />}></Route>

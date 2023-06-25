@@ -7,7 +7,7 @@ const Quiz = () => {
 
     return(
         <main className="container">
-            
+            <NavBar></NavBar>
             <hr/>
             <header>
                 <br/>

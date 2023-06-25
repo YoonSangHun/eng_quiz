@@ -4,8 +4,7 @@ import NavBar from '../component/NavBar';
 const Home = () => {
   return (
     <main className="container">
-      {/* 네비게이션 바를 App.js에 기입함.*/}
-   
+      <NavBar></NavBar>
     <hr />
       {/* App 소개 */}
       <header className="container">
