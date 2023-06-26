@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
+const QuziDetail = ({ data, quizNumber, handleNextClick, addQuizResult, quiz_count}) => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [color, setColor]  = useState(null);
@@ -26,6 +26,8 @@ const QuziDetail = ({ data, quizNumber, handleNextClick, quiz_count }) => {
         setColor(checkedValue === data.mean ? "blue" : "red");
         // 정답 체크 유무
         setCheckedAnswer(true)
+        // 결과 저장
+        addQuizResult(data.id, checkedValue === data.mean ? 10 : 0)
     }
     
     const 나가기모달열기 = () => {

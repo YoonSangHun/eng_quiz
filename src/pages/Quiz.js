@@ -8,12 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 
 const Quiz = () => {
+    /** 데이터베이스에 저장된 총 단어의 수 */
     const quiz_count = useGetAllVocasCount();
 
     const [quizNumber, setQuizNumber] = useState(0);
     const [quizList, setQuizList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const navigate = useNavigate()
+
+    const [quizResult,setQuizResult] = useState([]);
 
     useEffect(() => {
         if (quiz_count === 0) {
@@ -35,12 +38,35 @@ const Quiz = () => {
 
     // Next 버튼 클릭 시 quizNumbering을 1 올려주는 함수
     const handleNextClick = () => {
+        console.log(JSON.stringify(quizResult))
         if((quizNumber+1) === quiz_count) {
             alert("축하드립니다. 모든 퀴즈를 푸셨습니다.")
+            saveQuizResult();
             navigate("/");
         }
         setQuizNumber((prevNumbering) => prevNumbering + 1)
     };
+
+    const addQuizResult = (word, result) => {
+        setQuizResult([...quizResult, [word, result]]);
+    }
+
+    /**
+     * DB에 퀴즈 결과를 저장하는 함수.
+     **/
+    const saveQuizResult = () => {
+        // 디비에 quizResult 에 담긴 결과를 저장
+        axios.post(`${server}/uservocabulary`, {
+            "result": JSON.stringify(quizResult),
+            "user_id": sessionStorage.getItem("user_id")
+        }).then(res  =>{
+            // 성공적으로 요청을 보낸 경우 처리
+            console.log(res.data);
+        }).catch(err => {
+            // 오류 처리
+            console.error(err);
+        })
+    }
 
     return (
         <main className="container">
@@ -50,7 +76,7 @@ const Quiz = () => {
                 <p>Loading...</p>
             ) : (
                 <>
-                    <QuziDetail handleNextClick={handleNextClick} data={quizList[quizNumber]} quizNumber={quizNumber} quiz_count={quiz_count} />
+                    <QuziDetail handleNextClick={handleNextClick} addQuizResult={addQuizResult} data={quizList[quizNumber]} quizNumber={quizNumber} quiz_count={quiz_count} />
                 </>
             )}
             {/* <label form="text">정답</label>
