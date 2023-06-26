@@ -1,10 +1,29 @@
-import { useRef, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import NavBar from "../component/NavBar";
-
-
+import axios from "axios";
+import {server} from "../services/apiServer";
+import QuziDetail from "../component/QuziDetail";
 
 const Info = () => {
   const [loginUser, setLoginUser] = useState(sessionStorage.getItem('username'))
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [resultData, serResultData] = useState(null);
+
+  useEffect(() => {
+    // 데이터 로딩 시작
+    setIsLoading(true);
+    // 비동기로 퀴즈 데이터 가져오기
+    const fetchQuizData = () => {
+      axios.get(`${server}/uservocabulary?user_id=${sessionStorage.getItem('user_id')}`)
+          .then(res => {
+            console.log(JSON.parse(res.data.body));
+            serResultData(JSON.parse(res.data.body))
+            setIsLoading(false); // 데이터 로딩 완료
+      }).catch(err => console.log(err))
+    };
+    fetchQuizData();
+  }, []);
   return (
     <main className="container">
       <NavBar></NavBar>
@@ -28,30 +47,29 @@ const Info = () => {
       <article id="article">
         <label><strong><i>{loginUser}</i></strong> 님의 단어별 학습도 현황입니다.</label><br /><hr />
 
-
         {/* Search */}
         <label htmlFor="search"><strong>Search</strong></label>
         <input type="search" id="search" name="search" placeholder="Search" />
         <hr /> <br />
 
-        {/* Accordions 클릭 시 아래에 진행도 display 
-          진행률 = progress, ""은 암기율 ""% 단어입니다.*/}
-        <details>
-          <summary>
-            <mark><strong>Article</strong></mark>
-            <i>(글)기사, 본문</i>
-          </summary>
-                 
-          <div>"Article"은 암기율 10% 단어입니다.
-            <br /><br />
-            <progress id="progress-1" value="10" max="100">
-            </progress>
-            {/* 총 n회 출제, 정답 n회, 오답 n회  암기율은  (n/100 * 100)%입니다.*/}
-            <footer>
-              <i>총 10회 출제, 정답 1회, 오답 0회</i>
-            </footer>
-          </div>
-        </details>
+        {isLoading ? (
+            <p>Loading...</p>
+        ) : (
+            <>
+              {resultData.map((data) => (
+                  <details>
+                    <summary className="grid">
+                      <strong><mark>{data.word}</mark></strong>
+                      <i style={{fontSize:"17px"}}>{data.mean}</i>
+                      <progress id="progress-1" value={data.per} max="100" />
+                    </summary>
+                    <footer>
+                      <i>{data.source}</i>
+                    </footer>
+                  </details>
+                ))}
+            </>
+        )}
       </article>
     </main>
   );
