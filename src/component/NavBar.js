@@ -49,6 +49,7 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
                         </summary>
                         {jwtToken ?
                             <ul role="listbox">
+                                <Link to = "/"><li>Home</li></Link>
                                 <Link to = "/Info"><li>My Info</li></Link>
                                 <Link to="/" onClick={handleLogout}>
                                     <li style={{ color: "#F05650" }}>Logout</li>
