@@ -33,7 +33,7 @@ const Info = () => {
   useEffect(() => {
       let arr = resultData.filter(data => data.word.includes(search));
       setShowData(arr);
-  }, [search]);
+  }, [search,resultData]);
 
   return (
     <main className="container">
@@ -69,7 +69,7 @@ const Info = () => {
             search === "" ?
             <>
               {resultData.map((data) => (
-                  <details>
+                  <details key={data.word}>
                     <summary className="grid">
                       <strong><mark>{data.word}</mark></strong>
                       <i style={{fontSize:"15px"}}>{data.mean}</i>
@@ -84,7 +84,7 @@ const Info = () => {
             :
             <>
                 {showData.map((data) => (
-                    <details>
+                    <details key={data.word}>
                         <summary className="grid">
                             <strong><mark>{data.word}</mark></strong>
                             <i style={{fontSize:"15px"}}>{data.mean}</i>
