@@ -1,14 +1,14 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useState} from "react";
 import NavBar from "../component/NavBar";
 import axios from "axios";
 import {server} from "../services/apiServer";
-import QuziDetail from "../component/QuziDetail";
 
 const Info = () => {
-  const [loginUser, setLoginUser] = useState(sessionStorage.getItem('username'))
   const [isLoading, setIsLoading] = useState(true);
 
-  const [resultData, serResultData] = useState(null);
+  const [search,setSearch] = useState("");
+  const [resultData, setResultData] = useState([]);
+  const [showData, setShowData] = useState([]);
 
   useEffect(() => {
     // 데이터 로딩 시작
@@ -18,12 +18,23 @@ const Info = () => {
       axios.get(`${server}/uservocabulary?user_id=${sessionStorage.getItem('user_id')}`)
           .then(res => {
             console.log(JSON.parse(res.data.body));
-            serResultData(JSON.parse(res.data.body))
+            setResultData(JSON.parse(res.data.body))
             setIsLoading(false); // 데이터 로딩 완료
       }).catch(err => console.log(err))
     };
     fetchQuizData();
   }, []);
+
+  const handleChangeSearch = (e) => {
+    setSearch(e.target.value);
+  }
+
+  // 검색 기능 구현
+  useEffect(() => {
+      let arr = resultData.filter(data => data.word.includes(search));
+      setShowData(arr);
+  }, [search]);
+
   return (
     <main className="container">
       <NavBar></NavBar>
@@ -45,28 +56,44 @@ const Info = () => {
 
       {/* 진행도 표시창이 article 내에 생성 */}
       <article id="article">
-        <label><strong><i>{loginUser}</i></strong> 님의 단어별 학습도 현황입니다.</label><br /><hr />
+        <label><strong><i>{sessionStorage.getItem('username')}</i></strong> 님의 단어별 학습도 현황입니다.</label><br /><hr />
 
         {/* Search */}
         <label htmlFor="search"><strong>Search</strong></label>
-        <input type="search" id="search" name="search" placeholder="Search" />
+        <input type="search" id="search" name="search" placeholder="Search" onChange={handleChangeSearch} />
         <hr /> <br />
 
         {isLoading ? (
             <p>Loading...</p>
         ) : (
+            search === "" ?
             <>
               {resultData.map((data) => (
                   <details>
                     <summary className="grid">
                       <strong><mark>{data.word}</mark></strong>
-                      <i style={{fontSize:"17px"}}>{data.mean}</i>
+                      <i style={{fontSize:"15px"}}>{data.mean}</i>
                       <progress id="progress-1" value={data.per} max="100" />
                     </summary>
                     <footer>
                       <i>{data.source}</i>
                     </footer>
                   </details>
+                ))}
+            </>
+            :
+            <>
+                {showData.map((data) => (
+                    <details>
+                        <summary className="grid">
+                            <strong><mark>{data.word}</mark></strong>
+                            <i style={{fontSize:"15px"}}>{data.mean}</i>
+                            <progress id="progress-1" value={data.per} max="100" />
+                        </summary>
+                        <footer>
+                            <i>{data.source}</i>
+                        </footer>
+                    </details>
                 ))}
             </>
         )}
