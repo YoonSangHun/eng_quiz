@@ -65,7 +65,7 @@ const Login = () => {
                         <button type="submit" onClick={handleLoginFormSubmit}>Login</button>
                         <Link to='/SignIn'><button className='primary outline'>Create ID first</button></Link>
                     </div>
-                    { isInvalid === true ? <samll style={{color: "#F05650"}} >아이디와 패스워드가 틀렸습니다.</samll> : null }
+                    { isInvalid === true ? <small style={{color: "#F05650"}} >아이디와 패스워드가 틀렸습니다.</small> : null }
                 </form>
             </article>
         </dialog>
