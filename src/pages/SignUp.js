@@ -5,7 +5,7 @@ import useGetUsername from "../services/useGetUsername";
 import axios from "axios";
 import {server} from "../services/apiServer";
 
-const SignIn = () => {
+const SignUp = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [rePassword, setRePassword] = useState("")
@@ -60,7 +60,7 @@ const SignIn = () => {
             <article>
                 <Link to="/"><div aria-label="Close" className="close"></div></Link>
                 <hgroup>
-                    <h1>Sign-In</h1>
+                    <h1>Sign-Up</h1>
                     <h2>For your Records</h2>
                 </hgroup>
 
@@ -107,4 +107,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;

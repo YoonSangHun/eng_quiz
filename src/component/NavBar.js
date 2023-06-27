@@ -57,7 +57,7 @@ const NavBar = ({ isLoggedIn, onLogout }) => {
                             </ul>
                             :
                             <ul role="listbox">
-                                <Link to = "/SignIn"><li>Sign-In</li></Link>
+                                <Link to = "/SignUp"><li>Sign-Up</li></Link>
                             </ul>
                         }
                         </details>
